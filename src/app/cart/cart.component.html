@@ -1,0 +1,60 @@
+<!-- Component with the black bg for center -->
+
+<div
+  *ngIf="isOpen"
+  class="bg-neutral-700 bg-opacity-70 fixed min-w-screen max-w-screen min-h-screen max-h-screen top-0 left-0 z-10 overflow-hidden"
+>
+  <button
+    (click)="handleCart()"
+    class="bg-gray-300 h-8 w-8 right-2 top-2 absolute rounded-full"
+  >
+    X
+  </button>
+  <!-- Modal Container for center -->
+  <div class="h-screen w-screen top-0 left-0 p-6">
+    <!-- Modal -->
+    <div class="flex flex-col bg-white h-full w-full z-50">
+      <div class="text-3xl font-bold text-center">Tu carrito</div>
+      <div
+        class="bg-white h-full w-full z-50 flex flex-col"
+        *ngIf="cart.length <= 0"
+      >
+        <p class="text-2xl font-semibold text-center ml-auto mr-auto">
+          Nada por aqui aun
+        </p>
+      </div>
+
+      <div class="flex flex-col basis-full" *ngIf="cart.length > 0">
+        <ul class="p-2 flex flex-col basis-full">
+          <li
+            class="border rounded shadow-md p-2 flex justify-around items-center"
+            *ngFor="let item of cart; let i = index"
+          >
+            <span class="basis-8 text-ellipsis">{{ cart[i].pizza.title }}</span>
+            <span>{{ cart[i].quantity }}</span>
+            <div>
+              <button (click)="addOneItem(cart[i].pizza)" class="p-2 border">
+                +
+              </button>
+              <button
+                (click)="substractOneItem(cart[i].pizza)"
+                class="p-2 border"
+              >
+                -
+              </button>
+            </div>
+            <span>${{ cart[i].pizza.price * cart[i].quantity }}</span>
+          </li>
+
+          <li
+            class="border rounded shadow-md p-2 w-full flex justify-around items-center mt-auto"
+          >
+            <span class="text-ellipsis">TOTAL DE TU ORDEN</span>
+
+            <span>${{ total }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

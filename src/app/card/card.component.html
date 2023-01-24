@@ -1,0 +1,40 @@
+<div
+  class="flex flex-row-reverse w-full min-w-32 max-h-32 rounded overflow-hidden shadow-md"
+>
+  <div class="p-1 basis-4/12 flex justify-center items-center">
+    <img
+      class="object-cover object-center w-full h-full rounded"
+      [src]="cardData.image"
+    />
+  </div>
+  <div class="basis-8/12 overflow-hidden flex flex-col justify-center p-2">
+    <p class="font-semibold text-xl self-start truncate w-full basis-1/4">
+      {{ cardData.title }}
+    </p>
+
+    <p
+      class="flex whitespace-pre-line items-baseline text-ellipsis overflow-hidden basis-2/4 text-neutral-600 subtitle text-sm"
+    >
+      {{ cardData.subtitle }}
+    </p>
+    <div class="flex justify-between items-center basis-1/4">
+      <span class="text-xl font-bold">$ {{ cardData.price }}</span>
+      <div class="flex justify-around">
+        <button
+          *ngIf="!isOnCart"
+          (click)="addToCart(cardData)"
+          class="border-green-600 text-green-600 border rounded p-1 font-semibold"
+        >
+          Agregar
+        </button>
+        <button
+          *ngIf="isOnCart"
+          (click)="removeFromCart(cardData)"
+          class="border-red-600 text-red-600 border rounded p-1 font-semibold"
+        >
+          Remover
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

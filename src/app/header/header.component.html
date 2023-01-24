@@ -1,0 +1,17 @@
+<header
+  class="bg-neutral-200 w-screen flex p-2 justify-between fixed h-14 overflow-hidden"
+>
+  <div class="flex">
+    <!-- <span class="text-3xl font-bold underline"> Pizza world! </span> -->
+    <img class="w-8 h-8" [src]="icon" alt="" />
+  </div>
+  <!-- <ul class="flex">
+    <li><a>Link1</a></li>
+    <li><a>Link2</a></li>
+    <li><a>Link3</a></li>
+    <li><a>Link4</a></li>
+  </ul> -->
+  <div (click)="handleCart()" class="flex border rounded border-black p-2">
+    Carrito:{{ cartItems }}
+  </div>
+</header>
